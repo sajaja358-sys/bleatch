@@ -6,6 +6,22 @@
 <meta charset="UTF-8">
 <title>⚔️ متجر شحن الجواهر - بليتش ⚔️</title>
 <style>
+  body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('your-background.jpg'); /* ضع رابط أو اسم صورة الخلفية هنا */
+  background-size: cover;       /* يجعل الصورة تغطي الشاشة بالكامل */
+  background-position: center;  /* يضع الصورة في المنتصف */
+  background-repeat: no-repeat; /* يمنع التكرار */
+}
+
+/* تنسيق خاص بالهاتف */
+@media (max-width: 600px) {
+  body {
+    background-size: contain;   /* على الهاتف: يجعل الصورة تظهر كاملة بدون قص */
+    background-position: top;   /* يضع الصورة في الأعلى */
+  }
+}
   /* تنسيق خاص بالهاتف */
 @media (max-width: 600px) {
   /* الشبكة: بطاقة واحدة أو اثنتين في الصف */
@@ -612,6 +628,7 @@
   </div>
 </footer>
 </html>
+
 
 
 
