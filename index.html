@@ -6,23 +6,23 @@
 <meta charset="UTF-8">
 <title>⚔️ متجر شحن الجواهر - بليتش ⚔️</title>
 <style>
-  body {
+body {
   background: url("https://media2.giphy.com/media/eATt3b9TKBfB2l0z4G/giphy.gif") no-repeat center center fixed;
-  background-size: cover;       /* على الكمبيوتر تغطي الشاشة */
+  background-size: cover; /* على الكمبيوتر تغطي الشاشة */
   font-family: Tahoma, Arial, sans-serif;
   color: white;
   margin: 0;
 }
 
-/* تنسيق خاص بالهاتف */
+/* على الهاتف */
 @media (max-width: 600px) {
   body {
-    background-size: contain;   /* على الهاتف: تظهر كاملة بدون قص */
-    background-position: top;   /* تتمركز في الأعلى */
-    background-attachment: scroll; /* الخلفية تتحرك مع الصفحة بدل أن تكون ثابتة */
+    background-size: 200px 200px; /* حجم أصغر للخلفية */
+    background-repeat: no-repeat;
+    background-position: top center; /* تظهر في الأعلى */
+    background-attachment: scroll;   /* تتحرك مع الصفحة */
   }
 }
-
 /* تنسيق خاص بالهاتف */
 @media (max-width: 600px) {
   body {
@@ -636,6 +636,7 @@
   </div>
 </footer>
 </html>
+
 
 
 
