@@ -6,6 +6,112 @@
 <title>⚔️ متجر شحن الجواهر - بليتش ⚔️</title>
 <style>
   body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+    }
+
+    /* شبكة البطاقات */
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* شكل البطاقة */
+    .game-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-6px);
+    }
+
+    /* الصور مع نار متوهجة */
+    .game-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 3px solid transparent;
+      animation: fireGlow 1.2s infinite alternate;
+      box-shadow: 0 0 10px orange, 0 0 20px red, 0 0 30px yellow;
+    }
+
+    @keyframes fireGlow {
+      from { box-shadow: 0 0 10px orange, 0 0 20px red, 0 0 30px yellow; }
+      to   { box-shadow: 0 0 20px red, 0 0 40px orange, 0 0 60px yellow; }
+    }
+
+    .game-card h3 {
+      margin: 8px 0 4px;
+      font-size: 1.1em;
+    }
+
+    .game-card p {
+      margin: 0;
+      font-size: 0.9em;
+    }
+
+    /* Footer */
+    .footer {
+      background: #222;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .footer h3 {
+      margin-bottom: 10px;
+      color: #ff6a00;
+    }
+
+    .footer .icons span {
+      display: inline-block;
+      margin: 5px 10px;
+      padding: 6px 12px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 6px;
+    }
+
+    .footer a {
+      color: #ff6a00;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* تنسيق الهاتف */
+    @media (max-width: 600px) {
+      .games {
+        grid-template-columns: 1fr; /* بطاقة واحدة في كل صف */
+        padding: 10px;
+      }
+
+      .game-card img {
+        height: 120px;
+      }
+
+      .game-card h3 {
+        font-size: 1em;
+      }
+
+      .game-card p {
+        font-size: 0.85em;
+      }
+    }
+  body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
@@ -645,5 +751,6 @@
   </div>
 </footer>
 </html>
+
 
 
