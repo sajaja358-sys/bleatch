@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>⚔️ متجر شحن الجواهر - بليتش ⚔️</title>
+<style>
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .games {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* صفين في كل صف بطاقتين */
+    gap: 12px;
+    padding: 0;
+  }
+
+  .game-card {
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255,140,0,0.2);
+  }
+
+  .game-card img {
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 0 10px orange, 0 0 20px red, 0 0 30px yellow;
+    animation: fireGlow 1.2s infinite alternate;
+  }
+
+  .game-card h3 {
+    font-size: 1em;
+    margin: 8px 0 4px;
+  }
+
+  .game-card p {
+    font-size: 0.9em;
+    margin: 0;
+  }
+
+  footer {
+    padding: 20px 10px;
+    font-size: 0.9em;
+  }
+}
+@keyframes fireGlow {
+  from {
+    box-shadow: 0 0 10px orange, 0 0 20px red, 0 0 30px yellow;
+  }
+  to {
+    box-shadow: 0 0 20px red, 0 0 40px orange, 0 0 60px yellow;
+  }
+}
+.footer {
+  background: #222;
+  color: #fff;
+  padding: 30px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer h3 {
+  margin-bottom: 10px;
+  color: #ff6a00;
+}
+
+.footer .icons span {
+  display: inline-block;
+  margin: 5px 10px;
+  padding: 6px 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 6px;
+}
+
+.footer a {
+  color: #ff6a00;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+    /* الصور مربعة مع نار متوهجة */
+    .game-card img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 0; /* مربعة */
+      border: 3px solid transparent;
+      animation: fireGlow 1.2s infinite alternate;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    /* تأثير النار */
+    @keyframes fireGlow {
+      from {
+        box-shadow: 0 0 10px orange, 0 0 20px red, 0 0 30px yellow;
+      }
+      to {
+        box-shadow: 0 0 20px red, 0 0 40px orange, 0 0 60px yellow;
+      }
+    }
+
+    /* تحسين شكل البطاقة */
+    .game-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(255,140,0,0.4);
+    }
+
+    /* شبكة البطاقات */
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+
+
+  body {
+    background: url("https://media2.giphy.com/media/eATt3b9TKBfB2l0z4G/giphy.gif") no-repeat center center fixed;
+    background-size: cover;
+    font-family: Tahoma, Arial, sans-serif;
+    color: white;
+    margin: 0;
+  }
+  header {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.7);
+    border-bottom: 2px solid orange;
+  }
+  header h1 { margin: 0; color: orange; }
+
+  .games {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+    padding: 30px;
+  }
+  .game-card {
+    background: rgba(0,0,0,0.7);
+    border: 2px solid orange;
+    border-radius: 12px;
+    text-align: center;
+    padding: 18px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  }
+  .game-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px orange;
+    background: rgba(255,140,0,0.15);
+  }
+  .game-card img {
+    width: 80%;
+    max-height: 120px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  /* النوافذ المنبثقة */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+  }
+  .modal-content {
+    background: linear-gradient(135deg, #000, #1a1a1a);
+    border: 3px solid orange;
+    border-radius: 16px;
+    margin: 4% auto;
+    padding: 24px 20px 28px;
+    width: 72%;
+    max-width: 900px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 30px orange;
+    position: relative;
+    overflow: hidden;
+    animation: pulse 2s infinite;
+  }
+  .modal-content:before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -20%;
+    width: 140%;
+    height: 180%;
+    background: radial-gradient(rgba(255,140,0,0.15), transparent 60%);
+    transform: rotate(15deg);
+    pointer-events: none;
+  }
+  .close {
+    color: orange;
+    position: absolute;
+    right: 16px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+  }
+  .modal h2 { margin-top: 0; }
+
+  .offers {
+    margin: 18px 0 16px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 10px;
+    justify-content: center;
+  }
+  .offer-item {
+    background: rgba(255,140,0,0.18);
+    border: 1px solid rgba(255,140,0,0.4);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-weight: bold;
+  }
+
+  .btn {
+    background: linear-gradient(90deg, orange, #ffce7a);
+    color: #111;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255,140,0,0.6);
+    transition: transform 0.2s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .extra-note {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ccc;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 18px orange; }
+    50% { box-shadow: 0 0 32px #ff5a3d; }
+    100% { box-shadow: 0 0 18px orange; }
+  }
+
+  /* استجابة للشاشات الصغيرة */
+  @media (max-width: 992px) {
+    .games { grid-template-columns: repeat(3,1fr); }
+    .offers { grid-template-columns: 1fr; }
+    .modal-content { width: 86%; margin-top: 8%; }
+  }
+  @media (max-width: 640px) {
+    .games { grid-template-columns: repeat(2,1fr); }
+  }
+</style>
+
+</head>
+<body>
+
+
+<header>
+  <h1>⚔️ متجر شحن بليتش ⚔️</h1>
+</header>
+<body>
+
+  <section class="games">
+    <div class="game-card" onclick="document.getElementById('freefireModal').style.display='block'">
+      <img src="https://upload.wikimedia.org/wikipedia/ar/3/39/Garena_Free_Fire_MAX%28wikiar%29.png" alt="Free Fire">
+      <h3>🔥 Free Fire</h3>
+      <p>اشحن الجواهر الآن</p>
+    </div>
+
+    <div class="game-card" onclick="document.getElementById('clashModal').style.display='block'">
+      <img src="https://play-lh.googleusercontent.com/gnSC6s8-6Tjc4uhvDW7nfrSJxpbhllzYhgX8y374N1LYvWBStn2YhozS9XXaz1T_Pi2q=w600-h300-pc0xffffff-pd" alt="Clash Royale">
+      <h3>👑 Clash Royale</h3>
+      <p>اشحن الجواهر الآن</p>
+    </div>
+
+    <div class="game-card" onclick="document.getElementById('ludoModal').style.display='block'">
+      <img src="https://play-lh.googleusercontent.com/GP8H9ZbM-FWke-U-N9lGIRVqHX6l4ULTqVpilCKgicIw42D1qEVinQO0_KsFAIft1OEh" alt="Ludo">
+      <h3>🎲 Ludo</h3>
+      <p>اشحن الكوينز الآن</p>
+    </div>
+
+    <div class="game-card" onclick="document.getElementById('pubgModal').style.display='block'">
+      <img src="https://play-lh.googleusercontent.com/7zN9v4rsQj3mMnw86CTRqpDtmcplgyh-PznTtkbSxwnno_BhaKAOZXBr9yjb2L9Zqg" alt="PUBG Mobile">
+      <h3>🎮 PUBG Mobile</h3>
+      <p>اشحن UC الآن</p>
+    </div>
+
+    <div class="game-card" onclick="document.getElementById('eaModal').style.display='block'">
+      <img src="https://m.media-amazon.com/images/I/71p0PrwsGcL.jpg" alt="EA Sports FC 25">
+      <h3>⚽ EA Sports FC 25</h3>
+      <p>اشحن FC Points الآن</p>
+    </div>
+
+    <div class="game-card" onclick="document.getElementById('itunesModal').style.display='block'">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/71hf%2Bs6cOCL._SS400_.jpg" alt="iTunes Gift Cards">
+      <h3>🍎 بطاقات iTunes</h3>
+      <p>اشحن رصيدك الآن</p>
+    </div>
+
+    <div class="game-card" onclick="document.getElementById('efootballModal').style.display='block'">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/EFootball_colored_logo.svg" alt="eFootball">
+      <h3>🟡 eFootball</h3>
+      <p>اشحن عملاتك الآن</p>
+    </div>
+
+    <div class="game-card" onclick="document.getElementById('robloxModal').style.display='block'">
+      <img src="https://images.rbxcdn.com/5348266ea6c5e67b19d6a814cbbb70f6.jpg" alt="Roblox">
+      <h3>🧱 Roblox</h3>
+      <p>اشحن Robux الآن</p>
+    </div>
+
+    <div class="game-card" onclick="document.getElementById('tiktokModal').style.display='block'">
+      <img src="https://img.utdstc.com/icon/32d/af5/32daf5ad34af15eb8ea853325ec1838574e3a6d572c204950d42471cc2ceba94:200" alt="TikTok">
+      <h3>🎵 TikTok</h3>
+      <p>اشحن العملات الآن</p>
+    </div>
+
+    <div class="game-card" onclick="document.getElementById('googleModal').style.display='block'">
+      <img src="https://vision-techno.com/assets/images/columnsblocks/product255/63702.jpg" alt="Google Play Cards">
+      <h3>🟩 بطاقات Google Play</h3>
+      <p>اشحن رصيدك الآن</p>
+    </div>
+
+    <div class="game-card" onclick="document.getElementById('spotifyModal').style.display='block'">
+      <img src="https://img.utdstc.com/icon/4ba/1ef/4ba1ef03c48c81bb20965a85d244c07ec086c20f4ec9a047828e19ecbf245490:200" alt="Spotify">
+      <h3>🟢 Spotify</h3>
+      <p>اشترك بريميوم الآن</p>
+    </div>
+
+    <div class="game-card" onclick="document.getElementById('bloodModal').style.display='block'">
+      <img src="https://play-lh.googleusercontent.com/_tAhg7QF68s8-ldsU2-6wiRksx_qR3SsZyXeU7u1O-KDpub75amN_UB7_VwlzhlcTXzcGNXAOIQTSyfQoC_9yTg" alt="Blood Strike">
+      <h3>🔴 Blood Strike</h3>
+      <p>اشحن الذهب الآن</p>
+    </div>
+  </section>
+<!-- Free Fire -->
+<div id="freefireModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('freefireModal').style.display='none'">&times;</span>
+    <h2>🔥 عروض Free Fire</h2>
+    <div class="offers">
+      <div class="offer-item">100 + 10 Diamonds = 0.99 دولار</div>
+      <div class="offer-item">310 + 31 Diamonds = 2.99 دولار</div>
+      <div class="offer-item">520 + 52 Diamonds = 4.99 دولار</div>
+      <div class="offer-item">1060 + 106 Diamonds = 9.99 دولار</div>
+      <div class="offer-item">2180 + 218 Diamonds = 19.99 دولار</div>
+      <div class="offer-item">5600 + 560 Diamonds = 49.99 دولار</div>
+    </div>
+  <button class="btn" onclick="location.href='https://wa.me/212650764241'">🚀 اطلب الآن</button>
+    <div class="extra-note">📩 للتواصل عبر واتساب اضغط زر اطلب الآن</div>
+  </div>
+</div>
+
+<!-- Clash Royale -->
+<div id="clashModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('clashModal').style.display='none'">&times;</span>
+    <h2>👑 عروض Clash Royale</h2>
+    <div class="offers">
+      <div class="offer-item">80 Gems = 0.99 دولار</div>
+      <div class="offer-item">500 Gems = 4.99 دولار</div>
+      <div class="offer-item">1200 Gems = 9.99 دولار</div>
+      <div class="offer-item">2500 Gems = 19.99 دولار</div>
+      <div class="offer-item">6500 Gems = 49.99 دولار</div>
+    </div>
+   <button class="btn" onclick="location.href='https://wa.me/212650764241'">🚀 اطلب الآن</button>
+    <div class="extra-note">📩 أرسل ID اللاعب والباقة المطلوبة</div>
+  </div>
+</div>
+
+<!-- Ludo -->
+<div id="ludoModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('ludoModal').style.display='none'">&times;</span>
+    <h2>🎲 عروض Ludo</h2>
+    <div class="offers">
+      <div class="offer-item">100 كوين = 1.00 دولار</div>
+      <div class="offer-item">550 كوين = 4.49 دولار</div>
+      <div class="offer-item">1200 كوين = 8.99 دولار</div>
+      <div class="offer-item">2500 كوين = 17.99 دولار</div>
+    </div>
+   <button class="btn" onclick="location.href='https://wa.me/212650764241'">🚀 اطلب الآن</button>
+    <div class="extra-note">📩 أخبرنا باسم الحساب والباقة</div>
+  </div>
+</div>
+
+<!-- PUBG Mobile -->
+<div id="pubgModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('pubgModal').style.display='none'">&times;</span>
+    <h2>🎮 عروض PUBG Mobile (UC)</h2>
+    <div class="offers">
+      <div class="offer-item">60 UC = 0.99 دولار</div>
+      <div class="offer-item">300 UC = 4.99 دولار</div>
+      <div class="offer-item">600 UC = 9.99 دولار</div>
+      <div class="offer-item">1800 UC = 24.99 دولار</div>
+      <div class="offer-item">8100 UC = 99.99 دولار</div>
+    </div>
+   <button class="btn" onclick="location.href='https://wa.me/212650764241'">🚀 اطلب الآن</button>
+    <div class="extra-note">📩 أرسل لنا ID الشحن والمنصة</div>
+  </div>
+</div>
+
+<!-- EA Sports FC 25 -->
+<div id="eaModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('eaModal').style.display='none'">&times;</span>
+    <h2>⚽ عروض FC25 (FC Points)</h2>
+    <div class="offers">
+      <div class="offer-item">500 FC Points = 4.99 دولار</div>
+      <div class="offer-item">1050 FC Points = 9.99 دولار</div>
+      <div class="offer-item">2800 FC Points = 24.99 دولار</div>
+      <div class="offer-item">5900 FC Points = 49.99 دولار</div>
+    </div>
+  <button class="btn" onclick="location.href='https://wa.me/212650764241'">🚀 اطلب الآن</button>
+    <div class="extra-note">📩 أرسل لنا المنصة (PS/Xbox/PC)</div>
+  </div>
+</div>
+
+<!-- iTunes Cards -->
+<div id="itunesModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('itunesModal').style.display='none'">&times;</span>
+    <h2>🍎 بطاقات iTunes (Apple Gift Card)</h2>
+    <div class="offers">
+      <div class="offer-item">$10 Apple Gift Card = 10.00 دولار</div>
+      <div class="offer-item">$25 Apple Gift Card = 25.00 دولار</div>
+      <div class="offer-item">$50 Apple Gift Card = 50.00 دولار</div>
+      <div class="offer-item">$100 Apple Gift Card = 100.00 دولار</div>
+    </div>
+    <button class="btn" onclick="location.href='https://wa.me/212650764241'">🚀 اطلب الآن</button>
+    <div class="extra-note">📩 حدّد بلد البطاقة قبل الطلب</div>
+  </div>
+</div>
+
+<!-- eFootball -->
+<div id="efootballModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('efootballModal').style.display='none'">&times;</span>
+    <h2>🟡 عروض eFootball Coins</h2>
+    <div class="offers">
+      <div class="offer-item">250 Coins = 2.99 دولار</div>
+      <div class="offer-item">1050 Coins = 9.99 دولار</div>
+      <div class="offer-item">2150 Coins = 19.99 دولار</div>
+      <div class="offer-item">3250 Coins = 29.99 دولار</div>
+    </div>
+  <button class="btn" onclick="location.href='https://wa.me/212650764241'">🚀 اطلب الآن</button>
+    <div class="extra-note">📩 أرسل لنا المنصة وID الفريق</div>
+  </div>
+</div>
+
+<!-- Roblox -->
+<div id="robloxModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('robloxModal').style.display='none'">&times;</span>
+    <h2>🧱 عروض Roblox (Robux)</h2>
+    <div class="offers">
+      <div class="offer-item">400 Robux = 4.99 دولار</div>
+      <div class="offer-item">800 Robux = 9.99 دولار</div>
+      <div class="offer-item">1700 Robux = 19.99 دولار</div>
+      <div class="offer-item">4500 Robux = 49.99 دولار</div>
+    </div>
+  <button class="btn" onclick="location.href='https://wa.me/212650764241'">🚀 اطلب الآن</button>
+    <div class="extra-note">📩 اختر طريقة الشحن (Redeem/Direct)</div>
+  </div>
+</div>
+
+<!-- TikTok -->
+<div id="tiktokModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('tiktokModal').style.display='none'">&times;</span>
+    <h2>🎵 عروض TikTok Coins</h2>
+    <div class="offers">
+      <div class="offer-item">70 Coins = 0.99 دولار</div>
+      <div class="offer-item">350 Coins = 4.99 دولار</div>
+      <div class="offer-item">700 Coins = 9.99 دولار</div>
+      <div class="offer-item">1400 Coins = 19.99 دولار</div>
+    </div>
+ <button class="btn" onclick="location.href='https://wa.me/212650764241'">🚀 اطلب الآن</button>
+    <div class="extra-note">📩 أرسل لنا الحساب والباقة المطلوبة</div>
+  </div>
+</div>
+
+<!-- Google Play Cards -->
+<div id="googleModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('googleModal').style.display='none'">&times;</span>
+    <h2>🟩 بطاقات Google Play</h2>
+    <div class="offers">
+      <div class="offer-item">$10 Google Play Card = 10.00 دولار</div>
+      <div class="offer-item">$25 Google Play Card = 25.00 دولار</div>
+      <div class="offer-item">$50 Google Play Card = 50.00 دولار</div>
+      <div class="offer-item">$100 Google Play Card = 100.00 دولار</div>
+    </div>
+   <button class="btn" onclick="location.href='https://wa.me/212650764241'">🚀 اطلب الآن</button>
+    <div class="extra-note">📩 تأكد من بلد البطاقة قبل الطلب</div>
+  </div>
+</div>
+
+<!-- Spotify -->
+<div id="spotifyModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('spotifyModal').style.display='none'">&times;</span>
+    <h2>🟢 عروض Spotify Premium</h2>
+    <div class="offers">
+      <div class="offer-item">1 شهر Premium = 9.99 دولار</div>
+      <div class="offer-item">3 أشهر Premium = 29.99 دولار</div>
+      <div class="offer-item">6 أشهر Premium = 59.99 دولار</div>
+      <div class="offer-item">12 شهر Premium = 119.99 دولار</div>
+    </div>
+  <button class="btn" onclick="location.href='https://wa.me/212650764241'">🚀 اطلب الآن</button>
+    <div class="extra-note">📩 أرسل لنا البلد ونوع الخطة (فردي/عائلي)</div>
+  </div>
+</div>
+
+<!-- Blood Strike -->
+<div id="bloodModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('bloodModal').style.display='none'">&times;</span>
+    <h2>🔴 عروض Blood Strike (Gold)</h2>
+    <div class="offers">
+      <div class="offer-item">600 Gold = 0.99 دولار</div>
+      <div class="offer-item">1200 Gold = 4.99 دولار</div>
+      <div class="offer-item">2500 Gold = 9.99 دولار</div>
+      <div class="offer-item">5000 Gold = 19.99 دولار</div>
+    </div>
+   <button class="btn" onclick="location.href='https://wa.me/212650764241'">🚀 اطلب الآن</button>
+    <div class="extra-note">📩 أرسل لنا ID الحساب والباقة المطلوبة</div>
+  </div>
+</div>
+
+</body>
+<footer class="footer">
+  <div class="payments">
+    <h3>طرق الدفع المتاحة</h3>
+    <div class="icons">
+      <span>💳 Visa</span>
+      <span>💳 MasterCard</span>
+      <span>💳 Mada</span>
+      <span>💳 PayPal</span>
+      <span>📱 فودافون كاش</span>
+      <span>📱 أورنج كاش</span>
+      <span>📱 اتصالات كاش</span>
+    </div>
+  </div>
+
+  <div class="contact">
+    <h3>وسائل التواصل</h3>
+    <p>📧 البريد الإلكتروني: <a href="mailto:bleatch111@gmail.com">bleatch111@gmail.com</a></p>
+    <p>📞 الهاتف: <a href="tel:+212650764241">+212 650 764 241</a></p>
+    <p>🌐 تابعنا على: 
+      <a href="#">Facebook</a> | 
+      <a href="#">Instagram</a> | 
+      <a href="#">WhatsApp</a>
+    </p>
+  </div>
+</footer>
+</html>
+
