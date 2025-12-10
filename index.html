@@ -3,70 +3,50 @@
 <html lang="ar">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="UTF-8">
 <meta charset="UTF-8">
 <title>⚔️ متجر شحن الجواهر - بليتش ⚔️</title>
 <style>
-    /* 📱 تنسيق الهاتف: البطاقات قريبة من حجم الكادر */
-@media (max-width: 768px) {
-  .cards {
+  /* تنسيق خاص بالهاتف */
+@media (max-width: 600px) {
+  /* الشبكة: بطاقة واحدة أو اثنتين في الصف */
+  .games {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* صف فيه بطاقتين */
+    grid-template-columns: 1fr; /* بطاقة واحدة في كل صف */
     gap: 12px;
-    padding: 0 10px;
+    padding: 10px;
   }
-  .card {
-    width: 100%;
-    background: #fff;
-    color: #222;
+
+  /* البطاقة */
+  .game-card {
+    padding: 10px;
     border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    padding: 6px;
     text-align: center;
   }
-  .card img {
-    width: 100%;          /* الصورة تملأ البطاقة */
-    height: 120px;        /* ارتفاع ثابت */
-    object-fit: cover;    /* تقص الصورة لتناسب الكادر */
+
+  /* الصورة داخل البطاقة */
+  .game-card img {
+    width: 100%;
+    height: auto;
+    max-height: 140px;
+    object-fit: cover;
     border-radius: 6px;
   }
-  .card p {
-    font-size: 0.9em;
-    font-weight: bold;
-    margin-top: 6px;
+
+  /* النصوص */
+  .game-card h3 {
+    font-size: 1em;
+    margin: 8px 0 4px;
   }
-}
-/* 📱 تنسيق واجهة العروض للهاتف */
-@media (max-width: 768px) {
-  .modal-content {
-    width: 90%;              /* عرض أصغر يناسب شاشة الهاتف */
-    max-height: 80%;         /* لا يغطي الشاشة بالكامل */
-    overflow-y: auto;        /* إضافة تمرير إذا المحتوى طويل */
-    font-size: 0.95em;       /* تصغير النص قليلاً */
-    margin: 20% auto;        /* يبتعد عن الأعلى والأسفل */
-    padding: 12px;           /* مسافة داخلية أصغر */
-    border-radius: 10px;     /* زوايا ناعمة */
+
+  .game-card p {
+    font-size: 0.85em;
+    margin: 0 0 8px;
   }
-  .modal h2 {
-    font-size: 1.2em;        /* العنوان أصغر */
-    margin-bottom: 10px;
-  }
-  .offers {
-    font-size: 0.9em;        /* تصغير حجم العروض */
-    line-height: 1.4;        /* تنظيم السطور */
-  }
-  .offer-item {
-    padding: 6px 0;          /* مسافة بين كل عرض */
-  }
-  .btn {
-    font-size: 1em;          /* زر أصغر */
-    padding: 10px 14px;
-    width: 100%;             /* الزر بعرض البطاقة */
-    margin-top: 10px;
-  }
-  .extra-note {
-    font-size: 0.85em;       /* ملاحظة أصغر */
-    padding: 8px;
+
+  /* الفوتر */
+  .footer {
+    font-size: 0.85em;
+    padding: 15px 10px;
   }
 }
 
@@ -632,6 +612,7 @@
   </div>
 </footer>
 </html>
+
 
 
 
