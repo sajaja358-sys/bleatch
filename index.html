@@ -5,6 +5,72 @@
 <meta charset="UTF-8">
 <title>⚔️ متجر شحن الجواهر - بليتش ⚔️</title>
 <style>
+  body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #111; /* خلفية ثابتة داكنة */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+  .games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.game-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255,140,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-6px);
+}
+
+.game-card img {
+  width: 100%;
+  max-height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 0 10px orange, 0 0 20px red, 0 0 30px yellow;
+  animation: fireGlow 1.2s infinite alternate;
+}
+
+@keyframes fireGlow {
+  from {
+    box-shadow: 0 0 10px orange, 0 0 20px red, 0 0 30px yellow;
+  }
+  to {
+    box-shadow: 0 0 20px red, 0 0 40px orange, 0 0 60px yellow;
+  }
+}
+  @media (max-width: 600px) {
+  .games {
+    grid-template-columns: 1fr; /* بطاقة واحدة في كل صف */
+    padding: 10px;
+  }
+
+  .game-card img {
+    max-height: 120px;
+  }
+
+  .game-card h3 {
+    font-size: 1em;
+  }
+
+  .game-card p {
+    font-size: 0.9em;
+  }
+}
 @media (max-width: 600px) {
   body {
     padding: 10px;
@@ -579,4 +645,5 @@
   </div>
 </footer>
 </html>
+
 
